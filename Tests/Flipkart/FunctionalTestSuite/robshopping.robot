@@ -1,63 +1,81 @@
 *** Settings ***
 Library  SeleniumLibrary
 
-*** Variables ***
-${search_for}  flipkart
-${url}  https://www.google.com/
-
 *** Test Cases ***
-Google search
-    [Documentation]  google search
-    [Tags]  google
+home
+    [Documentation]  home
+    [Tags]  homepage
     start testcase
-    input text  name:q  ${search_for}
-    submit form
-    click element  class:LC20lb
+    sleep  1
+    click button  xpath:/html/body/div/div/div/table/tbody/tr[1]/td/button
 
-Flipkart search
-    [Documentation]  flipkart search products
-    [Tags]  flipkart
-    sleep  2s
-    click button  class:_2KpZ6l
-    input text  name:q  Iphone 13
-    click button  class:L0Z3Pu
-    sleep  2s
+admin login
+    [Documentation]  admin login
+    [Tags]  admin login
+    sleep  1
+    input text  name:username  admin
+    sleep  1
+    input text  name:password  9875
+    sleep  1
+    click button  xpath:/html/body/form/div/div/div/table/tbody/tr[3]/td/button
+    sleep  2
+
+adding book
+    [Documentation]  adding books
+    [Tags]  add books
+    input text  name:name       b6
+    sleep  1
+    input text  name:author     a6
+    sleep  1
+    input text  name:cat        c6
+    sleep  1
+    input text  name:price      699
+    sleep  1
+    input text  name:pub        p6
+    sleep  1
+    click button  xpath:/html/body/div/div/div/form/table/tbody/tr[6]/td/button
+    sleep  7
+    click element  xpath:/html/body/nav/div/div/ul/li[6]/a
+    sleep  2
+user register
+    [Documentation]  user login
+    [Tags]  user login
+    click button  xpath:/html/body/div/div/div/table/tbody/tr[2]/td/button
+    sleep  2
+    input text  name:usname     u5
+    sleep  1
+    input text  name:mobileno     1234567899
+    sleep  1
+    input text  name:email     something@gmail.com
+    sleep  1
+    input text  name:address     XYZ street
+    sleep  1
+    input text  name:pass    pass5
+    sleep  1
+    click button  xpath:/html/body/div/div/div/form/table/tbody/tr[6]/td/button
+    sleep  1
 
 
-Flipkart selection
-    [Documentation]  flipkart search products
-    [Tags]  flipkart
-    click element  xpath=/html/body/div/div/div[3]/div[1]/div[2]/div[3]/div/div/div/a/div[2]/div[1]/div[1]
-    sleep  2s
-
-
-Flipkart buy product
-    [Documentation]  flipkart buy products
-    [Tags]  flipkart
-    switch window  title:APPLE iPhone 13 ( 128 GB GB Storage, 0 GB RAM ) Online at Best Price On Flipkart.com
-    click element  xpath=/html/body/div[1]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[2]/form/button
-    sleep  3s
-
-
-Flipkart buy details
-    [Documentation]  flipkart buyer detials
-    [Tags]  flipkart
-    input text  class:_2IX_2-  something@gmail.com
-    sleep  2s
-    click element  xpath=/html/body/div[1]/div/div[2]/div/div[1]/div[1]/div/div/div/div/div[1]/div/form/div[3]/button/span
-    input text  class:_2IX_2-  123456
-    click element  xpath=/html/body/div[1]/div/div[2]/div/div[1]/div[1]/div/div/div/div/div[1]/div/form/div[4]/button
-    sleep  5s
+user login
+    [Documentation]  user login
+    [Tags]  user login
+    input text  name:Uname      u1
+    sleep  1
+    input text  name:Upass      pass1
+    sleep  1
+    click button  xpath:/html/body/div/div/div/form/table/tbody/tr[3]/td/button
+    sleep  7
+    click element   xpath:/html/body/nav/div/div/ul/li[3]/a
+    sleep  5
     stop testcase
 
 
 
 *** Keywords ***
 start testcase
-    Open Browser  ${url}  chrome
+    Open Browser  http://127.0.0.1:5000/  chrome
     maximize browser window
 
 stop testcase
     close browser
 
-flipkart testcase
