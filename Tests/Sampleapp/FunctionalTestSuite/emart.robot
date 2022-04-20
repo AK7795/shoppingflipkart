@@ -4,8 +4,6 @@ Library  SeleniumLibrary
 *** Variables ***
 ${admin_parameter}  admin
 ${pass1_parameter}  1234
-${user_parameter}  user1@gmail.com
-${pass2_parameter}  1111
 ${seller_parameter}  1@gmail.com
 ${pass3_parameter}  pass1
 ${mobile_parameter}  iphone12
@@ -105,11 +103,40 @@ Delete Mobile Test Case
     sleep  1s
     click button  xpath://html/body/div/div/div/form/table/tbody/tr[2]/td/button
     sleep  3s
+    click element   xpath:/html/body/nav[1]/div/span/a
+    sleep   2
+
+
+user login
+    [Documentation]     user login
+    [Tags]      user login
+    click element   xpath:/html/body/nav[1]/div/div[2]/a[1]
+    sleep   1
+    input text  name:email      user1@gmail.com
+    sleep   1
+    input text  name:pass       1111
+    sleep   1
+    click button    xpath:/html/body/div/div/div/form/table/tbody/tr[3]/td/button
+    sleep   3
+
+user view
+    [Documentation]     user view orders
+    [Tags]      user view orders
+
+    click element   xpath:/html/body/nav[3]/div/div/a
+    sleep   2
+    input text  name:number     123456789
+    sleep   1
+    click button    xpath:/html/body/form/center/button
+    sleep   5
+
+
 
 Buy grocery item test case
-    [Documentation]  Buy grocery item
+    [Documentation]     Buy grocery item
     [Tags]  Buy grocery item
     sleep   2
+
     click element   xpath:/html/body/nav[2]/div[1]/ul/li/a/img
     sleep   2
     click element   xpath:/html/body/div/div/div[3]/div/a
